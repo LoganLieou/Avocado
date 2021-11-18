@@ -38,23 +38,24 @@ with webdriver.Chrome() as driver:
     # get link
     driver.get("https://LoganLieou.github.io/Lettuce")
 
-    # hacking
-    img = driver.find_element(By.TAG_NAME, "img").get_attribute("src")
+    while(driver.find_element(By.TAG_NAME, "h1").get_attribute("innerHTML") != "Welcome"):
+        # hacking
+        img = driver.find_element(By.TAG_NAME, "img").get_attribute("src")
 
-    # wow so scuffed
-    img_data= base64.b64decode(img[22:])
+        # wow so scuffed
+        img_data= base64.b64decode(img[22:])
 
-    # hacker moment
-    with open("temp.png", "wb") as f:
-        f.write(img_data)
-        f.close()
+        # hacker moment
+        with open("temp.png", "wb") as f:
+            f.write(img_data)
+            f.close()
 
-    prediction = predict("temp.png")
-    print(prediction)
+        prediction = predict("temp.png")
+        print(prediction)
 
-    # get element by name and pass keys to that element
-    driver.find_element(By.TAG_NAME, "input").send_keys(prediction)
-    driver.find_element(By.CLASS_NAME, "submit").click()
+        # get element by name and pass keys to that element
+        driver.find_element(By.TAG_NAME, "input").send_keys(prediction)
+        driver.find_element(By.CLASS_NAME, "submit").click()
 
     while True:
         pass
