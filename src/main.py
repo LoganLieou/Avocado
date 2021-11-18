@@ -57,5 +57,5 @@ with webdriver.Chrome() as driver:
     driver.find_element(By.CLASS_NAME, "submit").click()
 
     while True:
-        print("scuffed")
+        pass
 
